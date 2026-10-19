@@ -1,0 +1,18 @@
+body {
+  margin: 0;
+  background-color: #020617;
+  color: #f8fafc;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Converts free OpenStreetMap tiles into a Dark Tactical GIS Map */
+.leaflet-layer,
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out,
+.leaflet-control-attribution {
+  filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
+}
+
+.leaflet-container {
+  background: #090d16 !important;
+}
