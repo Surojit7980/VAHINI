@@ -9,7 +9,8 @@ import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
 L.Icon.Default.mergeOptions({ iconUrl: markerIcon, iconRetinaUrl: markerIcon2x, shadowUrl: markerShadow });
 
-const socket = io('http://localhost:3001');
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3001';
+const socket = io(BACKEND_URL);
 
 export default function CommandDashboard({ role, onLogout }) {
   const [ewState, setEwState] = useState({ jammingLevel: 0, gpsSpoofed: false, cyberAttack: false });
@@ -48,7 +49,7 @@ export default function CommandDashboard({ role, onLogout }) {
 
   const openAARReport = async () => {
     try {
-      const res = await fetch('http://localhost:3001/api/export-aar');
+      const res = await fetch(`${BACKEND_URL}/api/export-aar`);
       const data = await res.json();
       setAarData(data);
       setShowAarModal(true);
